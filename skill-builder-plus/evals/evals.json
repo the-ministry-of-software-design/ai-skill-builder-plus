@@ -1,0 +1,54 @@
+{
+  "skill_name": "skill-builder-plus",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to build a skill that helps me write LinkedIn posts. I work in public sector tech consulting and post about digital transformation, AI adoption, and delivery methodology. I want the skill to match my tone - direct, no fluff, no hashtag spam. Can you help me create the skill from scratch?",
+      "expected_output": "A session that interviews for context, drafts a SKILL.md under 200 lines with a 3-part description, moves detail to references/ (each under 300 lines), and presents test prompts before running evals.",
+      "files": [],
+      "assertions": [
+        "SKILL.md is produced and is under 200 lines",
+        "The description contains trigger, negative trigger, and outcome",
+        "At least one reference file is created",
+        "All reference files are under 300 lines each",
+        "Test prompts are presented to the user before any evals are run"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have an existing skill for processing meeting notes. The SKILL.md is 235 lines long and it's getting slow - Claude seems to forget parts of the instructions by the end. Can you refactor it so it still works but loads faster? The file is at: /Users/jacqui/Library/CloudStorage/GoogleDrive-jacqui.read@madetech.com/My Drive/Vault/1. Projects/skill builder plus/skill-builder-plus-workspace/iteration-1/refactor-bloated-skill/meeting-notes-bloated-SKILL.md",
+      "expected_output": "A session that diagnoses the progressive disclosure violation, refactors SKILL.md to under 200 lines, creates reference files each under 300 lines, and performs a cold-start test.",
+      "files": [],
+      "assertions": [
+        "The session correctly identifies the problem as SKILL.md being too long (bloat / progressive disclosure violation)",
+        "The refactored SKILL.md is under 200 lines",
+        "Content is moved to reference files, each under 300 lines",
+        "A cold-start test or line-count check is performed after refactoring"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to create a skill that generates commit messages from git diffs. It should follow conventional commits format (feat/fix/chore etc). I don't need evals for this one - just help me write a good skill quickly.",
+      "expected_output": "A session that respects the skip-evals request, produces a SKILL.md under 200 lines with a 3-part description and conventional commits examples.",
+      "files": [],
+      "assertions": [
+        "The session respects the user's request to skip formal evals",
+        "SKILL.md is produced and is under 200 lines",
+        "The description contains trigger, negative trigger, and outcome",
+        "Conventional commits format examples are included (feat/fix/chore etc)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I've written a skill that generates weekly project status reports from Jira data. I want to run evals on it. I've got 3 test prompts ready. Can you set up the eval workspace structure, explain exactly where each file goes, and show me what the subagent save-path instructions should look like?",
+      "expected_output": "A session that sets up a correctly structured eval workspace: eval directories named with eval- prefix, grading.json placed at run-1/grading.json (not outputs/grading.json), timing.json mentioned and placed at run-1/timing.json, and subagent prompts showing explicit output paths pointing to run-1/outputs/.",
+      "files": [],
+      "assertions": [
+        "Eval directories are named with the eval- prefix (e.g. eval-jira-report, not jira-report)",
+        "grading.json is placed at <eval-dir>/<config>/run-1/grading.json, not inside outputs/",
+        "timing.json is mentioned and placed at <eval-dir>/<config>/run-1/timing.json",
+        "Subagent save-path instructions point to run-1/outputs/, not outputs/ directly"
+      ]
+    }
+  ]
+}

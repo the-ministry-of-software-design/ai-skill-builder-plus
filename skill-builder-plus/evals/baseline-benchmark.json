@@ -1,0 +1,385 @@
+{
+  "metadata": {
+    "skill_name": "skill-builder-plus",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-04-28T10:43:20Z",
+    "evals_run": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 3,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 79.7,
+        "tokens": 43842,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Session respects user request to skip formal evals",
+          "passed": true,
+          "evidence": "Only SKILL.md and session_summary.md produced - no eval files, evals.json, or test runs"
+        },
+        {
+          "text": "SKILL.md produced and under 200 lines",
+          "passed": true,
+          "evidence": "160 lines"
+        },
+        {
+          "text": "Description contains trigger, negative trigger, and outcome",
+          "passed": true,
+          "evidence": "3 matches for TRIGGER/DO NOT/OUTCOME"
+        },
+        {
+          "text": "Conventional commits format examples included",
+          "passed": true,
+          "evidence": "15 matches for feat/fix/chore in SKILL.md"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 310.3,
+        "tokens": 66578,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "SKILL.md is produced and is under 200 lines",
+          "passed": true,
+          "evidence": "SKILL.md found at eval-linkedin-post-skill/new_skill/SKILL.md, 86 lines. Note: saved outside run-1/outputs/ - subagent created skill structure one level up."
+        },
+        {
+          "text": "Description contains trigger, negative trigger, and outcome",
+          "passed": true,
+          "evidence": "grep TRIGGER/DO NOT/OUTCOME returned 3 matches"
+        },
+        {
+          "text": "At least one reference file is created",
+          "passed": true,
+          "evidence": "2 reference files: post-patterns.md (92 lines), tone-guide.md (76 lines)"
+        },
+        {
+          "text": "All reference files are under 300 lines each",
+          "passed": true,
+          "evidence": "92 and 76 lines - both well under 300"
+        },
+        {
+          "text": "Test prompts are presented to the user before any evals are run",
+          "passed": true,
+          "evidence": "EVALUATION_PLAN.md and TEST_PROMPTS.md present in outputs - evals not run"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 215.6,
+        "tokens": 70635,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Correctly identifies progressive disclosure violation",
+          "passed": true,
+          "evidence": "session_summary.md explicitly names 200-line rule violation and cold-start analysis"
+        },
+        {
+          "text": "Refactored SKILL.md under 200 lines",
+          "passed": true,
+          "evidence": "82 lines"
+        },
+        {
+          "text": "Reference files each under 300 lines",
+          "passed": true,
+          "evidence": "All 7 files under 300 lines: max is python-helpers.md at 212 lines"
+        },
+        {
+          "text": "Cold-start test performed after refactoring",
+          "passed": true,
+          "evidence": "session_summary.md: 'Refactored SKILL.md: 83 lines on cold-start'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 54.0,
+        "tokens": 39784,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Eval directories named with eval- prefix",
+          "passed": true,
+          "evidence": "14 matches for eval-[a-z] pattern in eval_setup_guide.md - consistent use of eval- prefix"
+        },
+        {
+          "text": "grading.json placed at run-1/grading.json not outputs/",
+          "passed": true,
+          "evidence": "7 matches for 'run-1/grading' in eval_setup_guide.md"
+        },
+        {
+          "text": "timing.json mentioned and placed at run-1/timing.json",
+          "passed": true,
+          "evidence": "11 mentions of timing.json; guide specifies run-1/ structure throughout"
+        },
+        {
+          "text": "Subagent save-path instructions point to run-1/outputs/",
+          "passed": true,
+          "evidence": "2 matches for 'run-1/outputs' in eval_setup_guide.md - used in subagent prompt examples"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 64.9,
+        "tokens": 45720,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Session respects user request to skip formal evals",
+          "passed": true,
+          "evidence": "No evals run. Extra files (analyze_diff.py, conventional_commits_guide.md) are reference materials, not evals"
+        },
+        {
+          "text": "SKILL.md produced and under 200 lines",
+          "passed": true,
+          "evidence": "110 lines"
+        },
+        {
+          "text": "Description contains trigger, negative trigger, and outcome",
+          "passed": false,
+          "evidence": "0 matches for TRIGGER/DO NOT/OUTCOME. Single-paragraph description without structured 3-part format"
+        },
+        {
+          "text": "Conventional commits format examples included",
+          "passed": true,
+          "evidence": "11 matches for feat/fix/chore in SKILL.md"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 194.1,
+        "tokens": 58484,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "SKILL.md is produced and is under 200 lines",
+          "passed": true,
+          "evidence": "SKILL.md is 74 lines (agent summary claimed 480 - actual file on disk is 74)"
+        },
+        {
+          "text": "Description contains trigger, negative trigger, and outcome",
+          "passed": false,
+          "evidence": "0 matches for TRIGGER/DO NOT/OUTCOME. Description is a single line with no structured 3-part format"
+        },
+        {
+          "text": "At least one reference file is created",
+          "passed": false,
+          "evidence": "No references/ folder created. SKILL.md contains all content inline"
+        },
+        {
+          "text": "All reference files are under 300 lines each",
+          "passed": true,
+          "evidence": "Vacuously true - no reference files created"
+        },
+        {
+          "text": "Test prompts are presented to the user before any evals are run",
+          "passed": true,
+          "evidence": "TEST_PROMPTS.md and EVALUATION_GUIDE.md present in outputs"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 209.6,
+        "tokens": 63101,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Correctly identifies progressive disclosure violation",
+          "passed": true,
+          "evidence": "session_summary identifies context saturation. References '500 lines' limit (old skill standard) rather than 200-line rule"
+        },
+        {
+          "text": "Refactored SKILL.md under 200 lines",
+          "passed": true,
+          "evidence": "65 lines"
+        },
+        {
+          "text": "Reference files each under 300 lines",
+          "passed": true,
+          "evidence": "All 4 reference files under 300 lines: max is import-transcript.md at 131 lines"
+        },
+        {
+          "text": "Cold-start test performed after refactoring",
+          "passed": false,
+          "evidence": "session_summary mentions '500 lines ideally under 200' as a guideline but no explicit cold-start line-count check performed after refactoring"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 52.9,
+        "tokens": 44484,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Eval directories named with eval- prefix",
+          "passed": true,
+          "evidence": "3 matches for eval-[a-z] - old skill uses eval-N naming (eval-1, eval-2) which satisfies the eval- prefix requirement"
+        },
+        {
+          "text": "grading.json placed at run-1/grading.json not outputs/",
+          "passed": false,
+          "evidence": "0 matches for 'run-1/grading'. Old skill guide uses with_skill_timing.json/old_skill_timing.json at iteration level, not run-1/ structure"
+        },
+        {
+          "text": "timing.json mentioned and placed at run-1/timing.json",
+          "passed": false,
+          "evidence": "timing.json mentioned 10 times but 0 matches for 'run-1/timing' or 'run-1/outputs' - locations not correctly specified"
+        },
+        {
+          "text": "Subagent save-path instructions point to run-1/outputs/",
+          "passed": false,
+          "evidence": "0 matches for 'run-1/outputs' - old skill does not include explicit run-1/outputs/ save paths in subagent prompts"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "new_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 164.9,
+        "stddev": 120.0965,
+        "min": 54.0,
+        "max": 310.3
+      },
+      "tokens": {
+        "mean": 55209.75,
+        "stddev": 15645.6059,
+        "min": 39784,
+        "max": 70635
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.65,
+        "stddev": 0.1225,
+        "min": 0.5,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 130.375,
+        "stddev": 82.9193,
+        "min": 52.9,
+        "max": 209.6
+      },
+      "tokens": {
+        "mean": 52947.25,
+        "stddev": 9266.6783,
+        "min": 44484,
+        "max": 63101
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.35",
+      "time_seconds": "+34.5",
+      "tokens": "+688"
+    }
+  },
+  "notes": [
+    "Eval 3 new_skill original run reported 3751709ms (anomaly - likely a framework reporting error). Re-run confirmed 79.7s. Timing replaced with re-run value.",
+    "3-part description (TRIGGER/DO NOT/OUTCOME) is a strong discriminator: new_skill passes consistently, old_skill never produces this format",
+    "Eval 4 (workflow structure) is the clearest overall discriminator: new_skill 100%, old_skill 50% - directly testing the structural fixes added in this version",
+    "Eval 1 new_skill saved SKILL.md outside run-1/outputs/ (at new_skill/ level) - recurring location issue worth monitoring"
+  ]
+}
