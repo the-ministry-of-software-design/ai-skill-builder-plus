@@ -1,0 +1,26 @@
+skill-builder-plus
+Copyright 2026 The Ministry of Software Design
+
+This product includes software developed by Anthropic, PBC as part of the
+skill-creator project (https://github.com/anthropics/skills/tree/main/skills/skill-creator),
+licensed under the Apache License, Version 2.0 (see LICENSE-APACHE).
+
+The following files are reproduced from skill-creator with minor or no
+modification:
+
+  skill-builder-plus/scripts/aggregate_benchmark.py
+  skill-builder-plus/scripts/generate_report.py
+  skill-builder-plus/scripts/generate_review.py  (path reference updated)
+  skill-builder-plus/scripts/improve_description.py
+  skill-builder-plus/scripts/package_skill.py
+  skill-builder-plus/scripts/quick_validate.py
+  skill-builder-plus/scripts/run_eval.py
+  skill-builder-plus/scripts/run_loop.py
+  skill-builder-plus/scripts/utils.py
+  skill-builder-plus/references/agents/analyzer.md
+  skill-builder-plus/references/agents/comparator.md
+  skill-builder-plus/references/agents/grader.md
+  skill-builder-plus/assets/viewer.html
+
+All other files are original work by The Ministry of Software Design
+and are licensed under the Mozilla Public License, Version 2.0 (see LICENSE).

@@ -128,3 +128,5 @@ Please open an issue before starting significant work so we can discuss the appr
 ## License
 
 This project is licensed under the [Mozilla Public License 2.0](LICENSE). You are free to use, modify, and distribute this skill, including in proprietary projects, provided that modifications to the licensed files are shared under the same licence.
+
+The scripts in `scripts/`, the agent files in `references/agents/`, and the eval viewer are derived from Anthropic's [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) project and are subject to the [Apache License 2.0](LICENSE-APACHE). See [NOTICE](NOTICE) for the full list of affected files.
