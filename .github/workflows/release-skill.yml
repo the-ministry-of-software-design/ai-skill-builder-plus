@@ -1,0 +1,63 @@
+name: Package and Release Skill
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'skill-builder-plus/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyyaml --break-system-packages 2>/dev/null || pip install pyyaml
+
+      - name: Extract version from SKILL.md
+        id: version
+        run: |
+          VERSION=$(python - <<'EOF'
+          import yaml, re
+          content = open('skill-builder-plus/SKILL.md').read()
+          match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+          fm = yaml.safe_load(match.group(1))
+          print(fm.get('metadata', {}).get('version', '0.0.0'))
+          EOF
+          )
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Packaging version $VERSION"
+
+      - name: Package skill
+        run: |
+          cd skill-builder-plus
+          python scripts/package_skill.py . ..
+
+      - name: Verify .skill file was created
+        run: |
+          ls -lh skill-builder-plus.skill
+          echo "File size: $(du -sh skill-builder-plus.skill | cut -f1)"
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          if gh release view "$TAG" &>/dev/null; then
+            echo "::error::Release $TAG already exists. Bump metadata.version in skill-builder-plus/SKILL.md before merging."
+            exit 1
+          fi
+          gh release create "$TAG" skill-builder-plus.skill \
+            --title "$TAG" \
+            --latest \
+            --notes "Install via \`claude plugin install skill-builder-plus.skill\` or from the Cowork sidebar."
